@@ -89,7 +89,8 @@ router.put('/like/:id', auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
     if (
-      post.likes.filter((like) => like.user.toString() === req.user.id).length
+      post.likes.filter((like) => like.user.toString() === req.user.id).length >
+      0
     ) {
       return res.status(400).json({ msg: 'Post already liked' });
     }
@@ -108,25 +109,23 @@ router.put('/like/:id', auth, async (req, res) => {
 router.post('/unlike/:id', auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
-    if (
-      post.likes.filter((like) => like.user.toString() === req.user.id)
-        .length === 0
-    ) {
-      return res
-        .status(400)
-        .json({ msg: `Post hasn't been liked by this user` });
+
+    // Check if the post has not yet been liked
+    if (!post.likes.some((like) => like.user.toString() === req.user.id)) {
+      return res.status(400).json({ msg: 'Post has not yet been liked' });
     }
 
-    const id = post.likes
-      .map((item) => item.user.toString())
-      .indexOf(req.user.id);
-    post.likes.splice(id, 1);
+    // remove the like
+    post.likes = post.likes.filter(
+      ({ user }) => user.toString() !== req.user.id
+    );
 
     await post.save();
-    res.json(post.likes);
+
+    return res.json(post.likes);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server error');
+    res.status(500).send('Server Error');
   }
 });
 
