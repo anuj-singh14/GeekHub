@@ -5,7 +5,7 @@
   "author": "Anuj Singh <anujs787@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "yarn server",
+    "start": "concurrently \"yarn server\" \"yarn run front\"",
     "server": "nodemon server",
     "front": "yarn --cwd frontend/ start",
     "dev": "concurrently \"yarn server\" \"yarn run front\""
@@ -20,10 +20,10 @@
     "gravatar": "^1.8.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.21",
-    "normalize-url": "^5.0.0"
+    "normalize-url": "^5.0.0",
+    "nodemon": "^2.0.4"
   },
   "devDependencies": {
-    "concurrently": "^5.2.0",
-    "nodemon": "^2.0.4"
+    "concurrently": "^5.2.0"
   }
 }
