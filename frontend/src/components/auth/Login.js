@@ -10,8 +10,14 @@ const Login = ({ login, isAuthenticated }) => {
     password: '',
   });
 
-  const { email, password } = formData;
+  // const { email, password } = formData;
 
+  // const onChange = (e) => {
+  //   console.log(e.target);
+  //   setFormData((prev) => {
+  //     return { ...prev, [e.target.name]: e.target.value };
+  //   });
+  // };
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -37,7 +43,7 @@ const Login = ({ login, isAuthenticated }) => {
             type="email"
             placeholder="Email Address"
             name="email"
-            value={email}
+            value={formData.email}
             onChange={(e) => onChange(e)}
             required
           />
@@ -47,7 +53,7 @@ const Login = ({ login, isAuthenticated }) => {
             type="password"
             placeholder="Password"
             name="password"
-            value={password}
+            value={formData.password}
             onChange={(e) => onChange(e)}
             required
             minLength="6"

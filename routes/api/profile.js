@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../../middleware/auth');
-const config = require('config');
+const config = require('../../config/config');
 const axios = require('axios');
 const { check, validationResult } = require('express-validator');
 // bring in normalize to give us a proper url, regardless of what user entered
@@ -293,7 +293,7 @@ router.get('/github/:username', async (req, res) => {
     );
     const headers = {
       'user-agent': 'node.js',
-      Authorization: `token ${config.get('githubAccessToken')}`,
+      Authorization: `token ${config.githubAccessToken}`,
     };
 
     const gitHubResponse = await axios.get(uri, { headers });
