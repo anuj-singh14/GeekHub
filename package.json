@@ -5,8 +5,10 @@
   "author": "Anuj Singh <anujs787@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "start": "yarn server",
+    "server": "nodemon server",
     "front": "yarn --cwd frontend/ start",
-    "server": "concurrently \"yarn server\" \"yarn run front\""
+    "dev": "concurrently \"yarn server\" \"yarn run front\""
   },
   "dependencies": {
     "axios": "^0.19.2",
