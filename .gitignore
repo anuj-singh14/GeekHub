@@ -1,3 +1,4 @@
 config/default.json
 node_modules
 .env
+frontend/build/node_modules
