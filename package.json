@@ -8,7 +8,8 @@
     "start": "concurrently \"yarn server\" \"yarn run front\"",
     "server": "nodemon server",
     "front": "yarn --cwd frontend/ start",
-    "dev": "concurrently \"yarn server\" \"yarn run front\""
+    "dev": "concurrently \"yarn server\" \"yarn run front\"",
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false yarn && yarn --cwd frontend/ build"
   },
   "dependencies": {
     "axios": "^0.19.2",
