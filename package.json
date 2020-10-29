@@ -5,10 +5,11 @@
   "author": "Anuj Singh <anujs787@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently \"yarn server\" \"yarn run front\"",
+    "start": "node server",
     "server": "nodemon server",
     "front": "yarn --cwd frontend/ start",
-    "dev": "concurrently \"yarn server\" \"yarn run front\""
+    "dev": "concurrently \"yarn server\" \"yarn run front\"",
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false yarn --cwd frontend/ && yarn --cwd frontend/ build"
   },
   "dependencies": {
     "axios": "^0.19.2",
