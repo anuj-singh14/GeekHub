@@ -12,7 +12,7 @@
     "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false yarn --cwd frontend/ && yarn --cwd frontend/ build"
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "bcryptjs": "^2.4.3",
     "config": "^3.3.1",
     "dotenv": "^8.2.0",
